@@ -20,8 +20,7 @@ export default function Start() {
   // }, [loadingUser, user])
 
   const createSession = async () => {
-    const sessionId = Math.random() * 10e16
-    const userKey = Math.random() * 10e6
+    const userKey = Math.random() * 10e16
     const users = [{
       name,
       phone_number: phoneNumber,
