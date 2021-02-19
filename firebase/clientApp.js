@@ -15,7 +15,10 @@ const clientCredentials = {
   appId: "1:394899969305:web:9f0e029a0e7d661530a188"
 }
 
+console.log('firebase apps:', firebase.apps)
+
 if (!firebase.apps.length) {
+  console.log('initializing...')
   firebase.initializeApp(clientCredentials)
   // Check that `window` is in scope for the analytics module!
   if (typeof window !== 'undefined') {
