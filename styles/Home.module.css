@@ -78,6 +78,7 @@
   flex-wrap: wrap;
   max-width: 800px;
   margin-top: 3rem;
+  flex-direction: column;
 }
 
 .card {
@@ -90,6 +91,9 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
+}
+.input {
+  margin: 0.25rem;
 }
 
 .card:hover,
@@ -117,6 +121,6 @@
 @media (max-width: 600px) {
   .grid {
     width: 100%;
-    flex-direction: column;
+    /* flex-direction: column; */
   }
 }
