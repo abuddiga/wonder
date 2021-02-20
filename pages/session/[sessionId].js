@@ -1,41 +1,67 @@
 // import { TextInputField, Button, Select } from 'evergreen-ui'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import Link from 'next/link'
 import styles from '../../styles/Home.module.css'
 // import { getActivities } from '../../fetchData/getActivities'
-// import firebase from '../firebase/clientApp'
-// import { useState } from 'react'
+import firebase from '../../firebase/clientApp'
+import { useState, useEffect } from 'react'
 import cookieCutter from 'cookie-cutter'
+import Cookies from 'cookies'
+import ActivityStack from '../../components/ActivityStack'
 
-export default function Session({activities}) {
-  const router = useRouter()
-  const { sessionId } = router.query
-  let userKey
-  // const userKey = cookieCutter.set('foo', 'bar')
-  console.log('sessionId: ', sessionId)
-  // console.log('userKey: ', userKey)
-  console.log('activities: ', activities)
+export default function Session({ sessionId, userKey }) {
+  const [activities, setActivities] = useState([])
+  const [currentIndex, setIndex] = useState(0)
+
+  useEffect(async function getActivities() {
+
+    const store = firebase.firestore()
+    const activitiesCollection = await store.collection('activities').limit(5).get()
+    const activities = activitiesCollection.docs.map(doc => doc.data())
+    setActivities(activities)
+  }, [])
+
+  async function updateFavoriteActivities(activityTitle) {
+    // const store = firebase.firestore()
+    // const usersRef = store.collection('sessions').doc(sessionId)
+    // const usersDoc = await usersRef.get()
+    // console.log('usersDoc: ', usersDoc.data())
+  }
 
   return (
     <div className={styles.container}>
-      <h3>Start swiping! {userKey}</h3>
+      {activities.length && currentIndex < activities.length ? <ActivityStack activities={activities} currentIndex={currentIndex} setIndex={setIndex} updateFavoriteActivities={updateFavoriteActivities}/> : <h1>foo</h1>}
     </div>
   )
 }
 
-export async function getServerSideProps(context) {
-  // console.log('firebase: ', firebase)
-  console.log('rinning server side props')
-  const activities = undefined// await getActivities()
-  if (!activities) {
-    return {
-      notFound: true
-    }
-  }
-  // console.log('cookieCutter: ', cookieCutter.get('guk'))
+export function getServerSideProps(context) {
+  const host = context.req.headers.host
+  const cookies = new Cookies(context.req, context.res)
+  const sessionId = cookies.get('sessid')
+  const userKey = cookies.get('guk')
   return {
     props: {
-      activities
-    }, // will be passed to the page component as props
+      sessionId,
+      userKey,
+      host
+    }
   }
 }
+
+// export async function getServerSideProps(context) {
+//   // console.log('firebase: ', firebase)
+//   console.log('rinning server side props')
+//   const activities = await getActivities()
+//   if (!activities) {
+//     return {
+//       notFound: true
+//     }
+//   }
+//   // console.log('cookieCutter: ', cookieCutter.get('guk'))
+//   return {
+//     props: {
+//       activities
+//     }, // will be passed to the page component as props
+//   }
+// }
