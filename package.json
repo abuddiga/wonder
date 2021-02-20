@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "cookie-cutter": "^0.2.0",
+    "cookies": "^0.8.0",
     "evergreen-ui": "^5.1.2",
     "firebase": "^8.2.8",
     "firebase-admin": "^9.5.0",

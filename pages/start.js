@@ -1,7 +1,9 @@
 import { TextInputField, Button, Select } from 'evergreen-ui'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react'
 import firebase from '../firebase/clientApp'
+import cookieCutter from 'cookie-cutter'
 
 export default function Start() {
   // const { loadingUser, user } = useUser()
@@ -36,11 +38,14 @@ export default function Start() {
       users
     })
     console.log('docRef: ', docRef)
-    alert(`Session created!! session id: ${docRef.id}`)
+    // alert(`Session created!! session id: ${docRef.id}`)
+    cookieCutter.set('guk', userKey)
+    cookieCutter.set('sessid', docRef.id)
+    // window.red
   }
 
   return (
-    <div className="styles.container">
+    <div className={styles.container}>
       <div className={styles.grid}>
         <Select onChange={e => setGroupSize(e.target.value)}>
             <option value={1} selected>1</option>
@@ -70,7 +75,9 @@ export default function Start() {
           className={styles.input}
           required
         />
-        <Button onClick={createSession}>Let's Kick It</Button>
+        <Link href="/invite">
+          <Button onClick={createSession}>Let's Kick It</Button>
+        </Link>
       </div>
     </div>
   )
