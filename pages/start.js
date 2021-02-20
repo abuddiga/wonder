@@ -1,4 +1,4 @@
-import { TextInputField, Button, Select } from 'evergreen-ui'
+import {TextInputField, Button, Select } from 'evergreen-ui'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react'
@@ -22,37 +22,35 @@ export default function Start() {
   // }, [loadingUser, user])
 
   const createSession = async () => {
-    const userKey = Math.random() * 10e16
-    const users = {
-      [userKey]: {
-        name,
-        phone_number: phoneNumber,
-        role: "captain",
-        user_key: userKey,
-        favorite_activities: []
-      }
-    }
-
     const store = firebase.firestore()
-    console.log('users: ', users)
-    const docRef = await store.collection('sessions').add({
+
+    const captain = {
+      name,
+      phone_number: phoneNumber,
+      role: "captain",
+      favorite_activities: []
+    }
+    const usersRef = await store.collection('users').add(captain)
+    console.log('usersRef: ', usersRef.id)
+
+    const sessionRef = await store.collection('sessions').add({
       groupSize: Number(groupSize),
-      users
+      users: [usersRef.id]
     })
-    console.log('docRef: ', docRef)
-    // alert(`Session created!! session id: ${docRef.id}`)
-    cookieCutter.set('guk', userKey)
-    cookieCutter.set('sessid', docRef.id)
-    // window.red
+
+    console.log('docRef: ', sessionRef.id)
+    // alert(`Session created!! session id: ${sessionRef.id}`)
+    cookieCutter.set('guk', usersRef.id)
+    cookieCutter.set('sessid', sessionRef.id)
   }
 
   return (
     <div className={styles.container}>
       <div className={styles.grid}>
-        <Select onChange={e => setGroupSize(e.target.value)}>
-            <option value={1} selected>1</option>
-            <option value={2}>2</option>
-            <option value={3}>2</option>
+        <label for="group-select">How big is your crew?</label>
+        <Select id="group-select" onChange={e => setGroupSize(e.target.value)}>
+            <option value={2} defaultValue>2</option>
+            <option value={3}>3</option>
             <option value={4}>4</option>
             <option value={5}>5</option>
             <option value={6}>6</option>
@@ -61,7 +59,7 @@ export default function Start() {
         <TextInputField
           onChange={e => setName(e.target.value)}
           value={name}
-          label="Name"
+          label="What should we call you?"
           placeholder="Scout Finch"
           name="text-input-name"
           className={styles.input}
@@ -70,7 +68,7 @@ export default function Start() {
         <TextInputField
           onChange={e => setPhoneNumber(e.target.value)}
           value={phoneNumber}
-          label="Phone Number"
+          label="Can I have yo numba?"
           placeholder="555-555-555"
           type="tel"
           name="text-input-number"
@@ -78,7 +76,7 @@ export default function Start() {
           required
         />
         <Link href="/invite">
-          <Button onClick={createSession}>Let's Kick It</Button>
+          <Button style={{cornerRadius:"8px", backgroundImage: "linear-gradient(#3DCDC7, #33AFAA 85%)", color:"white"}} onClick={createSession}>Let's Kick It</Button>
         </Link>
       </div>
     </div>

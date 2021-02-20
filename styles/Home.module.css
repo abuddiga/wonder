@@ -118,6 +118,11 @@
   height: 1em;
 }
 
+.image {
+  width: 250px;
+  max-height: 400px;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
