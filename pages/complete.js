@@ -9,6 +9,25 @@ import Cookies from 'cookies'
 import intersection from 'lodash/intersection'
 import triggerSms from '../fetchData/triggerSms'
 
+function mostFrequent(arr) {
+  return Object.entries(
+    arr.reduce((a, v) => {
+      a[v] = a[v] ? a[v] + 1 : 1;
+      return a;
+    }, {})
+  ).reduce((a, v) => (v[1] >= a[1] ? v : a), [null, 0])[0]
+}
+
+function getHighestVotedActivity(groupActivities = []) {
+  const flattenedActivities = groupActivities.reduce((acc, curr) => {
+    return acc.concat(curr)
+  }, [])
+  console.log('flattenedActivities: ', flattenedActivities)
+  const highestVotedActivity = mostFrequent(flattenedActivities)
+  console.log('highestVotedActivity: ', highestVotedActivity)
+  return highestVotedActivity
+}
+
 export default function Complete() {
   const router = useRouter()
 
@@ -22,15 +41,7 @@ export default function Complete() {
     const userKey = cookieCutter.get('guk')
     console.log('userKey: ', userKey)
 
-    // const [session, setSession] = useState({
-    //   groupSize: 10,
-    //   users: []
-    // })
-    // const [user, setUser] = useState(userKey)
-
     const store = firebase.firestore()
-    // const session = await store.collection('sessions').doc(path).get()
-    // console.log('session: ', session.data())
     if (!sessionId) {
       document.cookie = ""
       // cookieCutter.set('sessid', '') // not working yet
@@ -49,14 +60,15 @@ export default function Complete() {
 
   async function runMatch() {
     const store = firebase.firestore()
-    const groupUsers = await Promise.all(users.map(async userKey => {
+    const sessionId = cookieCutter.get('sessid')
+
+    const sessionRef = await store.collection('sessions').doc(sessionId).get()
+    const sessionData = sessionRef.data()
+    // setUsers(sessionData.users)
+
+    const groupUsers = await Promise.all(sessionData.users.map(async userKey => {
       const userRef = await store.collection('users').doc(userKey).get()
       const user = userRef.data()
-      // if (user.favorite_activities && user.favorite_activities.length) {
-      //   return user.favorite_activities
-      // } else {
-      //   return []
-      // }
       return user
     }))
 
@@ -64,14 +76,12 @@ export default function Complete() {
     const groupActivities = groupUsers.map(user => user.favorite_activities)
     const groupPhoneNumbers = groupUsers.map(user => user.phone_number)
 
-    //TODO: There's a bug here in the matching, not sure what the deal is
-
     console.log('groupActivities: ', groupActivities)
     console.log('groupPhoneNumbers: ', groupPhoneNumbers)
-    const activityMatches = intersection.apply(null, groupActivities)
-    console.log('activityMatches: ', activityMatches)
-    if (activityMatches.length) {
-      const activityRef = await store.collection('activities').doc(activityMatches[0].toString()).get()
+    const highestVotedActivity = getHighestVotedActivity(groupActivities)
+
+    if (highestVotedActivity !== undefined) {
+      const activityRef = await store.collection('activities').doc(highestVotedActivity.toString()).get()
       const activityMatch = activityRef.data()
       setActivityMatch(activityMatch)
       console.log('calling api')
@@ -91,6 +101,8 @@ export default function Complete() {
         })
       })
       console.log('res: ', res.json())
+    } else {
+      console.log('Err, No highest voted activity: ', highestVotedActivity)
     }
   }
 
@@ -115,7 +127,7 @@ export default function Complete() {
         <p>{`Nice! That’s it for this session. We’re still waiting on xyz group members to finish. Hang tight and we’ll automatically text your group when everyone is done.`}</p>
         <p>{`Flaky friend? You can always close out the kick-it by tapping below, and we'll text the group where you're all headed!`}</p>
         <Button onClick={() => runMatch()}>Close out Kick It</Button>
-        <Button onClick={() => callSms()}>Call Sms</Button>
+        {/* <Button onClick={() => callSms()}>Call Sms</Button> */}
       </div>
     )
   }
