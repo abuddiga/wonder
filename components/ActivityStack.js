@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 export default function ActivityStack({ activities, currentIndex, setIndex, updateFavoriteActivities }) {
   function handleSwipeRight(e) {
     console.log('chose activity: ', activity)
-    updateFavoriteActivities(activity.title)
+    updateFavoriteActivities(activity.id)
     setIndex(currentIndex+1)
   }
 
