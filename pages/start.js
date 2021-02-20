@@ -23,13 +23,15 @@ export default function Start() {
 
   const createSession = async () => {
     const userKey = Math.random() * 10e16
-    const users = [{
-      name,
-      phone_number: phoneNumber,
-      role: "captain",
-      user_key: userKey,
-      favorite_activities: []
-    }]
+    const users = {
+      [userKey]: {
+        name,
+        phone_number: phoneNumber,
+        role: "captain",
+        user_key: userKey,
+        favorite_activities: []
+      }
+    }
 
     const store = firebase.firestore()
     console.log('users: ', users)
