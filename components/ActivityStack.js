@@ -15,6 +15,7 @@ export default function ActivityStack({ activities, currentIndex, setIndex, upda
 
   return (
     <div className={styles.container}>
+      <img className={styles.image} src={activity.img_link}/>
       <h3>{activity.title}</h3>
       <p>{activity.description}</p>
       <Button onClick={() => setIndex(currentIndex+1)}>Nah Bro</Button>
