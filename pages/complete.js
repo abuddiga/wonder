@@ -12,16 +12,15 @@ import triggerSms from '../fetchData/triggerSms'
 export default function Complete() {
   const router = useRouter()
 
-  const [session, setSession] = useState({
-    groupSize: 10,
-    users: []
-  })
+  const [users, setUsers] = useState([])
   const [user, setUser] = useState(``)
+  const [groupSize, setGroupSize] = useState(0)
   const [activityMatch, setActivityMatch] = useState(null)
 
   useEffect(async function initializeSession() {
     const sessionId = cookieCutter.get('sessid')
-    const userKey = cookieCutter.get('userKey')
+    const userKey = cookieCutter.get('guk')
+    console.log('userKey: ', userKey)
 
     // const [session, setSession] = useState({
     //   groupSize: 10,
@@ -41,14 +40,16 @@ export default function Complete() {
       const sessionRef = await store.collection('sessions').doc(sessionId).get()
       const userRef = await store.collection('users').doc(userKey).get()
       setUser(userRef.data())
-      setSession(sessionRef.data())
+      const sessionData = sessionRef.data()
+      setGroupSize(sessionData.groupSize)
+      setUsers(sessionData.users)
       console.log('user: ', userRef.data())
     }
   }, [])
 
   async function runMatch() {
     const store = firebase.firestore()
-    const groupActivities = await Promise.all(session.users.map(async userKey => {
+    const groupActivities = await Promise.all(users.map(async userKey => {
       const userRef = await store.collection('users').doc(userKey).get()
       const user = userRef.data()
       if (user.favorite_activities && user.favorite_activities.length) {
@@ -68,13 +69,17 @@ export default function Complete() {
       const activityMatch = activityRef.data()
       setActivityMatch(activityMatch)
       console.log('calling api')
+
+      const cleanPhoneNumber = user.phone_number.replace(/-/g,'')
+      console.log('clean number: ', cleanPhoneNumber)
+
       const res = await fetch('/api/sendMessage', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          toPh: '+17196618770',
+          toPh: `+1${cleanPhoneNumber}`,
           activityMatch
         })
       })

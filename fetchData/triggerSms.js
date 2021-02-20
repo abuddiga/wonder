@@ -1,5 +1,5 @@
 export const accountSid = "ACe713c9f5f1596ddf465a1523c7aff698";
-export const authToken = "d12a91fd13578b0507f1fb57c9e621f0";
+export const authToken = "dd88d97d9d5d084745c70dce210dab6d";
 export const fromPh = "+17725772905"
 export const twilioUrl = "https://conversations.twilio.com/v1/Conversations/"
 //Sending POST in below format
