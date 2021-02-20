@@ -99,11 +99,15 @@ export default function Session({ sessionId: sessionIdCookie, userKey }) {
     )
   }
 
+  function goToNextPage() {
+    router.push('/complete')
+  }
+
   return (
     <div className={styles.container}>
       {
         activities.length && currentIndex < activities.length ?
-        <ActivityStack activities={activities} currentIndex={currentIndex} setIndex={setIndex} updateFavoriteActivities={updateFavoriteActivities}/> :
+        <ActivityStack activities={activities} currentIndex={currentIndex} setIndex={setIndex} updateFavoriteActivities={updateFavoriteActivities} goToNextPage={goToNextPage}/> :
         <h1>foo</h1>
       }
     </div>
