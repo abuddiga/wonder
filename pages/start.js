@@ -22,28 +22,26 @@ export default function Start() {
   // }, [loadingUser, user])
 
   const createSession = async () => {
-    const userKey = Math.random() * 10e16
-    const users = {
-      [userKey]: {
-        name,
-        phone_number: phoneNumber,
-        role: "captain",
-        user_key: userKey,
-        favorite_activities: []
-      }
-    }
-
     const store = firebase.firestore()
-    console.log('users: ', users)
-    const docRef = await store.collection('sessions').add({
+
+    const captain = {
+      name,
+      phone_number: phoneNumber,
+      role: "captain",
+      favorite_activities: []
+    }
+    const usersRef = await store.collection('users').add(captain)
+    console.log('usersRef: ', usersRef.id)
+
+    const sessionRef = await store.collection('sessions').add({
       groupSize: Number(groupSize),
-      users
+      users: [usersRef.id]
     })
-    console.log('docRef: ', docRef)
-    // alert(`Session created!! session id: ${docRef.id}`)
-    cookieCutter.set('guk', userKey)
-    cookieCutter.set('sessid', docRef.id)
-    // window.red
+
+    console.log('docRef: ', sessionRef.id)
+    // alert(`Session created!! session id: ${sessionRef.id}`)
+    cookieCutter.set('guk', usersRef.id)
+    cookieCutter.set('sessid', sessionRef.id)
   }
 
   return (

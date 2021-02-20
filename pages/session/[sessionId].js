@@ -21,11 +21,13 @@ export default function Session({ sessionId, userKey }) {
     setActivities(activities)
   }, [])
 
-  async function updateFavoriteActivities(activityTitle) {
-    // const store = firebase.firestore()
-    // const usersRef = store.collection('sessions').doc(sessionId)
-    // const usersDoc = await usersRef.get()
-    // console.log('usersDoc: ', usersDoc.data())
+  async function updateFavoriteActivities(activityId) {
+    const store = firebase.firestore()
+    const userRef = store.collection('users').doc(userKey)
+    const userDoc = await userRef.update({
+      favorite_activities: firebase.firestore.FieldValue.arrayUnion(activityId)
+    })
+
   }
 
   return (
@@ -48,20 +50,3 @@ export function getServerSideProps(context) {
     }
   }
 }
-
-// export async function getServerSideProps(context) {
-//   // console.log('firebase: ', firebase)
-//   console.log('rinning server side props')
-//   const activities = await getActivities()
-//   if (!activities) {
-//     return {
-//       notFound: true
-//     }
-//   }
-//   // console.log('cookieCutter: ', cookieCutter.get('guk'))
-//   return {
-//     props: {
-//       activities
-//     }, // will be passed to the page component as props
-//   }
-// }
