@@ -8,7 +8,14 @@ export default function Invite({sessionId, userKey, host}) {
 
   console.log('sessionId: ', sessionId)
   console.log('userKey: ', userKey)
-  const url = host ? `http://${host}/${sessionId}` : `${window.location.origin}/${sessionId}`
+  let url
+  if (host) {
+    url = `http://${host}/${sessionId}`
+  } else {
+    sessionId = cookieCutter.get('sessid')
+    userKey = cookieCutter.get('guk')
+    url = `${window.location.origin}/${sessionId}`
+  }
 
   return (
     <div className={styles.container}>
