@@ -1,4 +1,4 @@
-import { TextInputField, Button, Select } from 'evergreen-ui'
+import {TextInputField, Button, Select } from 'evergreen-ui'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react'
@@ -47,11 +47,9 @@ export default function Start() {
   return (
     <div className={styles.container}>
       <div className={styles.grid}>
-        <label for="group-select">Group size *</label>
+        <label for="group-select">How big is your crew?</label>
         <Select id="group-select" onChange={e => setGroupSize(e.target.value)}>
-            <label>Group size *</label>
-            <option value={1} defaultValue>1</option>
-            <option value={2}>2</option>
+            <option value={2} defaultValue>2</option>
             <option value={3}>3</option>
             <option value={4}>4</option>
             <option value={5}>5</option>
@@ -61,7 +59,7 @@ export default function Start() {
         <TextInputField
           onChange={e => setName(e.target.value)}
           value={name}
-          label="Name"
+          label="What should we call you?"
           placeholder="Scout Finch"
           name="text-input-name"
           className={styles.input}
@@ -70,7 +68,7 @@ export default function Start() {
         <TextInputField
           onChange={e => setPhoneNumber(e.target.value)}
           value={phoneNumber}
-          label="Phone Number"
+          label="Can I have yo numba?"
           placeholder="555-555-555"
           type="tel"
           name="text-input-number"
@@ -78,7 +76,7 @@ export default function Start() {
           required
         />
         <Link href="/invite">
-          <Button onClick={createSession}>Let's Kick It</Button>
+          <Button style={{cornerRadius:"8px", backgroundImage: "linear-gradient(#3DCDC7, #33AFAA 85%)", color:"white"}} onClick={createSession}>Let's Kick It</Button>
         </Link>
       </div>
     </div>
