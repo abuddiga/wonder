@@ -49,19 +49,25 @@ export default function Complete() {
 
   async function runMatch() {
     const store = firebase.firestore()
-    const groupActivities = await Promise.all(users.map(async userKey => {
+    const groupUsers = await Promise.all(users.map(async userKey => {
       const userRef = await store.collection('users').doc(userKey).get()
       const user = userRef.data()
-      if (user.favorite_activities && user.favorite_activities.length) {
-        return user.favorite_activities
-      } else {
-        return []
-      }
+      // if (user.favorite_activities && user.favorite_activities.length) {
+      //   return user.favorite_activities
+      // } else {
+      //   return []
+      // }
+      return user
     }))
+
+    console.log('groupUsers: ', groupUsers)
+    const groupActivities = groupUsers.map(user => user.favorite_activities)
+    const groupPhoneNumbers = groupUsers.map(user => user.phone_number)
 
     //TODO: There's a bug here in the matching, not sure what the deal is
 
     console.log('groupActivities: ', groupActivities)
+    console.log('groupPhoneNumbers: ', groupPhoneNumbers)
     const activityMatches = intersection.apply(null, groupActivities)
     console.log('activityMatches: ', activityMatches)
     if (activityMatches.length) {
@@ -69,9 +75,10 @@ export default function Complete() {
       const activityMatch = activityRef.data()
       setActivityMatch(activityMatch)
       console.log('calling api')
+      console.log('groupPhoneNumbers: ', groupPhoneNumbers)
 
-      const cleanPhoneNumber = user.phone_number.replace(/-/g,'')
-      console.log('clean number: ', cleanPhoneNumber)
+      const cleanPhoneNumbers = groupPhoneNumbers.map(phoneNumber => `+1${phoneNumber.replace(/-/g,'')}`)
+      console.log('clean numbers: ', cleanPhoneNumbers)
 
       const res = await fetch('/api/sendMessage', {
         method: 'POST',
@@ -79,7 +86,7 @@ export default function Complete() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          toPh: `+1${cleanPhoneNumber}`,
+          toPhs: cleanPhoneNumbers,
           activityMatch
         })
       })
