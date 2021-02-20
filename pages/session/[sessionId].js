@@ -9,10 +9,12 @@ import cookieCutter from 'cookie-cutter'
 import Cookies from 'cookies'
 import ActivityStack from '../../components/ActivityStack'
 
-export default function Session({ sessionId, userKey }) {
+export default function Session({ sessionId: sessionIdCookie, userKey }) {
   const router = useRouter()
   const path = router.query.sessionId
 
+  const [sessionId, setSession] = useState(sessionIdCookie)
+  const [user, setUser] = useState(userKey)
   const [activities, setActivities] = useState([])
   const [currentIndex, setIndex] = useState(0)
   const [name, setName] = useState(``)
@@ -23,12 +25,14 @@ export default function Session({ sessionId, userKey }) {
     const session = await store.collection('sessions').doc(path).get()
     console.log('session: ', session.data())
     if (!session.exists) {
+      document.cookie = ""
       // cookieCutter.set('sessid', '') // not working yet
       // cookieCutter.set('guk', '') // not working yet
       router.push('/')
     } else {
       if (!sessionId) {
-        cookieCutter.set('sessid', sessionId)
+        setSession(path)
+        cookieCutter.set('sessid', path)
       }
       const activitiesCollection = await store.collection('activities').limit(5).get()
       const activities = activitiesCollection.docs.map(doc => doc.data())
@@ -38,7 +42,7 @@ export default function Session({ sessionId, userKey }) {
 
   async function updateFavoriteActivities(activityId) {
     const store = firebase.firestore()
-    const userRef = store.collection('users').doc(userKey)
+    const userRef = store.collection('users').doc(user)
     const userDoc = await userRef.update({
       favorite_activities: firebase.firestore.FieldValue.arrayUnion(activityId)
     })
@@ -57,16 +61,14 @@ export default function Session({ sessionId, userKey }) {
     console.log('usersRef: ', usersRef.id)
     cookieCutter.set('guk', usersRef.id)
 
-    const session = sessionId || path
-
-    const sessionRef = await store.collection('sessions').doc(session)
+    const sessionRef = await store.collection('sessions').doc(sessionId)
     const sessionDoc = await sessionRef.update({
       users: firebase.firestore.FieldValue.arrayUnion(usersRef.id)
     })
-    return null
+    setUser(usersRef.id)
   }
 
-  if (!userKey || !userKey.length) {
+  if (!user || !user.length) {
     return (
       <div className={styles.container}>
         <div className={"member-info"}>
