@@ -13,8 +13,10 @@
     "evergreen-ui": "^5.1.2",
     "firebase": "^8.2.8",
     "firebase-admin": "^9.5.0",
+    "lodash": "^4.17.20",
     "next": "10.0.5",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "twilio": "^3.56.0"
   }
 }
