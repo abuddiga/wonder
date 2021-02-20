@@ -108,7 +108,7 @@ export default function Session({ sessionId: sessionIdCookie, userKey }) {
       {
         activities.length && currentIndex < activities.length ?
         <ActivityStack activities={activities} currentIndex={currentIndex} setIndex={setIndex} updateFavoriteActivities={updateFavoriteActivities} goToNextPage={goToNextPage}/> :
-        <h1>foo</h1>
+        <h1>Loading Activities...</h1>
       }
     </div>
   )
