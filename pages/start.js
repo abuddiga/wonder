@@ -48,9 +48,9 @@ export default function Start() {
     <div className={styles.container}>
       <div className={styles.grid}>
         <Select onChange={e => setGroupSize(e.target.value)}>
-            <option value={1} selected>1</option>
+            <option value={1} defaultValue>1</option>
             <option value={2}>2</option>
-            <option value={3}>2</option>
+            <option value={3}>3</option>
             <option value={4}>4</option>
             <option value={5}>5</option>
             <option value={6}>6</option>
