@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <Image alt="Kick it logo" src="/logo.png" width={477} height={318} />
+        <Image alt="Kick it logo" src="/logo.png" width={200} height={133.33} />
         <h3 className={styles.title}>
           Welcome to Kick It
           
