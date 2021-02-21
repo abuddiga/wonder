@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { Button } from 'evergreen-ui'
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 export default function Home() {
   return (
@@ -16,7 +15,7 @@ export default function Home() {
         </h3>
         <div className={styles.grid}>
           <Link href="/start" className={styles.card}>
-            <Button>Start a Session</Button>
+            <Button height={56}>Start a Session</Button>
           </Link>
         </div>
       </main>

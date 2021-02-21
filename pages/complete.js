@@ -134,7 +134,7 @@ export default function Complete() {
 
   return (
     <div className={styles.container}>
-      <img src={activityMatch.img_link}/>
+      <img className={styles.image} src={activityMatch.img_link}/>
       <h3>{`You're going to ${activityMatch.title}!`}</h3>
     </div>
   )

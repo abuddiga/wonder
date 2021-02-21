@@ -4,7 +4,6 @@ import styles from '../styles/Home.module.css'
 import { useState } from 'react'
 import firebase from '../firebase/clientApp'
 import cookieCutter from 'cookie-cutter'
-import '../node_modules/react-bootstrap/'
 
 export default function Start() {
   // const { loadingUser, user } = useUser()
@@ -77,7 +76,7 @@ export default function Start() {
           required
         />
         <Link href="/invite">
-          <Button className={styles.colorbutton} onClick={createSession}>Let's Kick It</Button>
+          <Button className={styles.colorbutton} height={56} onClick={createSession}>Let's Kick It</Button>
         </Link>
       </div>
     </div>
