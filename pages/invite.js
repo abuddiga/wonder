@@ -1,6 +1,7 @@
 import { TextInputField, Button, Select } from 'evergreen-ui'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import akshayStyles from '../styles/akshay.module.css'
 import cookieCutter from 'cookie-cutter'
 import Cookies from 'cookies'
 
@@ -8,6 +9,7 @@ export default function Invite({sessionId, userKey, host}) {
 
   console.log('sessionId: ', sessionId)
   console.log('userKey: ', userKey)
+  console.log('host: ', host)
   let url
   if (host) {
     url = `http://${host}/${sessionId}`
@@ -19,10 +21,23 @@ export default function Invite({sessionId, userKey, host}) {
 
   return (
     <div className={styles.container}>
-      <h3>Great, now share this link with your crew to find an activity!</h3>
-      <p>{url}</p>
+      <div className={akshayStyles.inviteBox}>
+        <h3 className={akshayStyles.inviteBoxTitle}>
+          Get ready to kick it! Share the link with your crew 👇
+        </h3>
+        <div className={akshayStyles.shareLink}>
+          <img src={`/share.svg`} alt={`share`} />
+          <div className={akshayStyles.shareDiv}>Share it with friends</div>
+        </div>
+        <div className={akshayStyles.orDiv}>OR</div>
+        <div className={akshayStyles.copyLink}>
+          <img src={`/copy.svg`} alt={`copy`} />
+          <div className={akshayStyles.copyDiv}>Copy url to share</div>
+        </div>
+        <div className={akshayStyles.urlDiv}>{url}</div>
+      </div>
       <a href={`/session/${sessionId}`}>
-        <Button height={45}>Find Places to Kick It</Button>
+        <Button height={45} className={styles.colorbutton}>Find Places to Kick It</Button>
       </a>
     </div>
   )

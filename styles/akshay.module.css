@@ -14,3 +14,39 @@
   line-height: 1.5;
   margin-bottom: 2.5rem;
 }
+
+.inviteBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+  width: 95%;
+  background-color: #F1F5F9;
+  border-radius: 1.5rem;
+  /* align-items: center; */
+}
+
+.inviteBoxTitle {
+  text-align: center;
+}
+
+.shareLink, .copyLink {
+  display: flex;
+}
+
+.shareDiv, .copyDiv {
+  transform: translateY(35%);
+  margin-left: 1rem;
+}
+
+.urlDiv {
+  transform: translateY(35%);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.orDiv {
+  margin: 20px;
+  text-align: center;
+}
