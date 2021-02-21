@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Button } from 'evergreen-ui'
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 export default function Home() {
   return (
