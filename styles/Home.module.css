@@ -93,6 +93,16 @@
   flex-direction: column;
 }
 
+.gridrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin-top: 3rem;
+  flex-direction: row;
+}
+
 .card {
   margin: 1rem;
   flex-basis: 45%;
