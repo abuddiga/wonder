@@ -1,5 +1,6 @@
 import {TextInputField, Button, Select } from 'evergreen-ui'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react'
 import firebase from '../firebase/clientApp'
@@ -8,6 +9,7 @@ import Image from 'next/image'
 
 export default function Start() {
   // const { loadingUser, user } = useUser()
+  const router = useRouter()
 
   const [name, setName] = useState(``)
   const [phoneNumber, setPhoneNumber] = useState(``)
@@ -43,6 +45,7 @@ export default function Start() {
     // alert(`Session created!! session id: ${sessionRef.id}`)
     cookieCutter.set('guk', usersRef.id)
     cookieCutter.set('sessid', sessionRef.id)
+    router.push('/invite')
   }
 
   return (
@@ -75,9 +78,7 @@ export default function Start() {
         marginBottom={30}
         style={{width:"10rem", height:"3rem"}}
       />
-      <Link href="/invite">
-        <Button className={styles.colorbutton} style={{display:"inline", textAlign:"center"}} height={45} width={194} onClick={createSession}>Let's Kick It</Button>
-      </Link>
+      <Button className={styles.colorbutton} style={{display:"inline", textAlign:"center"}} height={45} width={194} onClick={createSession}>Let's Kick It</Button>
     </div>
   )
 }
