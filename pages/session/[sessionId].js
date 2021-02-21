@@ -2,12 +2,14 @@ import { TextInputField, Button, Select } from 'evergreen-ui'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import styles from '../../styles/Home.module.css'
+import akshayStyles from '../../styles/akshay.module.css'
 // import { getActivities } from '../../fetchData/getActivities'
 import firebase from '../../firebase/clientApp'
 import { useState, useEffect } from 'react'
 import cookieCutter from 'cookie-cutter'
 import Cookies from 'cookies'
 import ActivityStack from '../../components/ActivityStack'
+import Image from 'next/image'
 
 export default function Session({ sessionId: sessionIdCookie, userKey }) {
   const router = useRouter()
@@ -71,29 +73,50 @@ export default function Session({ sessionId: sessionIdCookie, userKey }) {
   if (!user || !user.length) {
     return (
       <div className={styles.container}>
-        <div className={"member-info"}>
-          <h3>{`Swipe through these activities to let us know what you like. We'll text your crew after you're all done.`}</h3>
-          <p>{`Enter your name & phone number to get started.`}</p>
+        <div className={akshayStyles.memberInfo}>
+          {/* <h3>{`Swipe through these activities to let us know what you like. We'll text your crew after you're all done.`}</h3>
+          <p>{`Enter your name & phone number to get started.`}</p> */}
+          <div className={styles.verticalCenter}>
+            <Image alt="Kick it logo" src="/logo.png" width={200} height={133.33} />
+          </div>
+          
+          <p className={styles.value4}>
+              👯‍ Gather your crew
+            </p>
+            <p className={styles.value4}>
+              👆 Swipe on activities
+            </p>
+            <p className={styles.value4}>
+              ♥️ Receive your top match
+            </p>
+          <label style={{marginBottom:"1rem", color:"#325370", fontSize:"24px"}}>What should we call you?</label>
           <TextInputField
             onChange={e => setName(e.target.value)}
             value={name}
-            label="Name"
-            placeholder="Scout Finch"
+            placeholder="Harry Potter"
             name="text-input-name"
+            marginBottom={30}
             className={styles.input}
-            required
+            style={{width:"10rem", height:"3rem"}}
           />
+          <label style={{marginBottom:"1rem", color:"#325370", fontSize:"24px"}}>Can I have yo numba?</label>
           <TextInputField
             onChange={e => setPhoneNumber(e.target.value)}
             value={phoneNumber}
-            label="Phone Number"
+            // label="Phone Number"
             placeholder="555-555-555"
             type="tel"
             name="text-input-number"
+            marginBottom={30}
             className={styles.input}
-            required
+            style={{width:"10rem", height:"3rem"}}
           />
-          <Button onClick={() => createSession()}>Let's Kick It</Button>
+          <Button
+            className={styles.pinkbutton}
+            style={{display:"block", textAlign:"center", margin:"0 auto"}}
+            onClick={() => createSession()}>
+            Let's Kick It
+          </Button>
         </div>
       </div>
     )
