@@ -74,7 +74,7 @@ export default function Session({ sessionId: sessionIdCookie, userKey }) {
     return (
       <div className={styles.container}>
         <div className={akshayStyles.memberInfo}>
-          {/* <h3>{`Swipe through these activities to let us know what you like. We'll text your crew after you're all done.`}</h3>
+          {/* <h3>{`Swippe through these activities to let us know what you like. We'll text your crew after you're all done.`}</h3>
           <p>{`Enter your name & phone number to get started.`}</p> */}
           <div className={styles.verticalCenter}>
             <Image alt="Kick it logo" src="/logo.png" width={200} height={133.33} />
