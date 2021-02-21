@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { Button } from 'evergreen-ui'
+import ericStyles from '../styles/eric.module.css'
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
+
 
 export default function Home() {
   return (
@@ -25,8 +27,10 @@ export default function Home() {
             <p className={styles.value3}>
               ♥️ Receive your top match
             </p>
-            <Link href="/start" className={styles.card}>
-              <Button height={45}>Let's kick it</Button>
+
+            <Link href="/start" className={styles.cardCenter}>
+              <Button className={styles.pinkbutton}> Let's kick it </Button>
+
             </Link>
           </div>
         </div> 
