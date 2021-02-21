@@ -47,9 +47,8 @@ export default function Start() {
 
   return (
     <div className={styles.container}>
-      <h1 style={{textAlign:"center", color:"#325370"}}>We help you kick it.</h1>
-      <label style={{marginBottom:"1rem", color:"#325370", flex:"none"}}>How big is your crew?</label>
-      <Select style={{flex:"none", marginBottom:"30px"}} id="group-select" onChange={e => setGroupSize(e.target.value)}>
+      <label style={{marginBottom:"1rem", color:"#325370", flex:"none", fontSize:"24px"}}>How big is your crew?</label>
+      <Select style={{flex:"none", marginBottom:"30px", height:"3rem", width:"3rem", textAlign:"center"}} id="group-select" onChange={e => setGroupSize(e.target.value)}>
           <option value={2} defaultValue>2</option>
           <option value={3}>3</option>
           <option value={4}>4</option>
@@ -57,15 +56,16 @@ export default function Start() {
           <option value={6}>6</option>
           <option value={7}>7</option>
       </Select>
-      <label style={{marginBottom:"1rem", color:"#325370"}}>What should we call you?</label>
+      <label style={{marginBottom:"1rem", color:"#325370", fontSize:"24px"}}>What should we call you?</label>
       <TextInputField
         onChange={e => setName(e.target.value)}
         value={name}
         placeholder="Scout Finch"
         name="text-input-name"
         marginBottom={30}
+        style={{width:"10rem", height:"3rem"}}
       />
-      <label style={{marginBottom:"1rem", color:"#325370"}}>Can I have yo numba?</label>
+      <label style={{marginBottom:"1rem", color:"#325370", fontSize:"24px"}}>Can I have yo numba?</label>
       <TextInputField
         onChange={e => setPhoneNumber(e.target.value)}
         value={phoneNumber}
@@ -73,9 +73,10 @@ export default function Start() {
         type="tel"
         name="text-input-number"
         marginBottom={30}
+        style={{width:"10rem", height:"3rem"}}
       />
       <Link href="/invite">
-        <Button height={56} onClick={createSession}>Let's Kick It</Button>
+        <Button className={styles.colorbutton} style={{display:"inline", textAlign:"center"}} height={45} width={194} onClick={createSession}>Let's Kick It</Button>
       </Link>
     </div>
   )
