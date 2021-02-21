@@ -1,6 +1,6 @@
 .swipeTitle {
   width: 90%;
-  margin: 0 0 10% 0;;
+  transform: translateY(-250%);
 }
 
 .buttonRow {
@@ -49,4 +49,12 @@
 .orDiv {
   margin: 20px;
   text-align: center;
+}
+
+.completeHeader {
+  transform: translateY(-250%);
+}
+
+.emptyDiv {
+  height: 7rem;
 }
