@@ -145,6 +145,7 @@
 
 .activity {
   /* width: 87.2%; */
+  transform: translateY(-10%);
 }
 
 .activityCard {
@@ -156,32 +157,33 @@
   color: white;
   position: absolute;
   transform: translate(9%, -130%);
-  width: 70%;
+  width: 85%;
   /* background-color: grey; */
 }
 
 .activityDescription {
   margin: 0.75rem 0 0 0;
-  line-height: 1.375rem;
+  line-height: 1.25rem;
 }
 
 .activityTitle {
   margin: 0;
+  text-align: left;
 }
 
 .activityBackground {
   background: rgba(0,0,0,0.3);
   border-radius: 1rem;
-  width: 80%;
-  height: 16%;
-  transform: translate(4.5%, -113%);
+  width: 90%;
+  height: 20%;
+  transform: translate(5.5%, -120%);
   position: absolute;
   backdrop-filter: blur(8px);
 }
 
 .activityImage {
   border-radius: 1.5rem;
-  height: 32.5rem;
+  height: 27.5rem;
   width: 20.4375rem;
 }
 

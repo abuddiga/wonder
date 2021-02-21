@@ -138,7 +138,7 @@ export default function Complete() {
 
   return (
     <div className={styles.container}>
-      <h3>{`You're going to...`}</h3>
+      <h3 className={akshayStyles.completeHeader}>{`You're going to...`}</h3>
       <Activity activity={activityMatch} />
     </div>
   )
