@@ -91,17 +91,17 @@ export default function Complete() {
       const cleanPhoneNumbers = groupPhoneNumbers.map(phoneNumber => `+1${phoneNumber.replace(/-/g,'')}`)
       console.log('clean numbers: ', cleanPhoneNumbers)
 
-      // const res = await fetch('/api/sendMessage', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify({
-      //     toPhs: cleanPhoneNumbers,
-      //     activityMatch
-      //   })
-      // })
-      // console.log('res: ', res.json())
+      const res = await fetch('/api/sendMessage', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          toPhs: cleanPhoneNumbers,
+          activityMatch
+        })
+      })
+      console.log('res: ', res.json())
     } else {
       console.log('Err, No highest voted activity: ', highestVotedActivity)
     }
