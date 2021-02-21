@@ -48,45 +48,35 @@ export default function Start() {
   return (
     <div className={styles.container}>
       <h1 style={{textAlign:"center", color:"#325370"}}>We help you kick it.</h1>
-      <div className={styles.gridrow}>
-        <label style={{marginRight:"1rem", color:"#325370"}}>How big is your crew?</label>
-        <Select id="group-select" onChange={e => setGroupSize(e.target.value)}>
-            <option value={2} defaultValue>2</option>
-            <option value={3}>3</option>
-            <option value={4}>4</option>
-            <option value={5}>5</option>
-            <option value={6}>6</option>
-            <option value={7}>7</option>
-        </Select>
-      </div>
-      <div className={styles.gridrow}>
-        <label style={{marginRight:"1rem"}}>What should we call you?</label>
-        <TextInputField
-          onChange={e => setName(e.target.value)}
-          value={name}
-          placeholder="Scout Finch"
-          name="text-input-name"
-          label=""
-          marginBottom={0}
-        />
-      </div>
-      <div className={styles.gridrow}>
-        <label style={{marginRight:"1rem", color:"#325370"}}>Can I have yo numba?</label>
-        <TextInputField
-          onChange={e => setPhoneNumber(e.target.value)}
-          value={phoneNumber}
-          placeholder="555-555-555"
-          type="tel"
-          name="text-input-number"
-          label=""
-          marginBottom={0}
-        />
-        </div>
-      <div className={styles.gridrow}>
-        <Link href="/invite">
-          <Button className={styles.colorbutton} height={45} onClick={createSession}>Let's Kick It</Button>
-        </Link>
-      </div>
+      <label style={{marginBottom:"1rem", color:"#325370", flex:"none"}}>How big is your crew?</label>
+      <Select style={{flex:"none", marginBottom:"30px"}} id="group-select" onChange={e => setGroupSize(e.target.value)}>
+          <option value={2} defaultValue>2</option>
+          <option value={3}>3</option>
+          <option value={4}>4</option>
+          <option value={5}>5</option>
+          <option value={6}>6</option>
+          <option value={7}>7</option>
+      </Select>
+      <label style={{marginBottom:"1rem", color:"#325370"}}>What should we call you?</label>
+      <TextInputField
+        onChange={e => setName(e.target.value)}
+        value={name}
+        placeholder="Scout Finch"
+        name="text-input-name"
+        marginBottom={30}
+      />
+      <label style={{marginBottom:"1rem", color:"#325370"}}>Can I have yo numba?</label>
+      <TextInputField
+        onChange={e => setPhoneNumber(e.target.value)}
+        value={phoneNumber}
+        placeholder="555-555-555"
+        type="tel"
+        name="text-input-number"
+        marginBottom={30}
+      />
+      <Link href="/invite">
+        <Button height={56} onClick={createSession}>Let's Kick It</Button>
+      </Link>
     </div>
   )
 }
