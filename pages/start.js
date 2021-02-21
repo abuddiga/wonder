@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 import { useState } from 'react'
 import firebase from '../firebase/clientApp'
 import cookieCutter from 'cookie-cutter'
+import '../node_modules/react-bootstrap/'
 
 export default function Start() {
   // const { loadingUser, user } = useUser()
@@ -47,7 +48,7 @@ export default function Start() {
   return (
     <div className={styles.container}>
       <div className={styles.grid}>
-        <label for="group-select">How big is your crew?</label>
+        <label htmlFor="group-select">How big is your crew?</label>
         <Select id="group-select" onChange={e => setGroupSize(e.target.value)}>
             <option value={2} defaultValue>2</option>
             <option value={3}>3</option>

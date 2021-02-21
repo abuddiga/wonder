@@ -2,6 +2,7 @@ import { TextInputField, Button, Select } from 'evergreen-ui'
 import Link from 'next/link'
 import Activity from './Activity'
 import styles from '../styles/Home.module.css'
+import Image from 'next/image'
 
 export default function ActivityStack({ activities, currentIndex, setIndex, updateFavoriteActivities, goToNextPage }) {
   function handleSwipeLeft(e) {

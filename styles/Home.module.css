@@ -184,8 +184,21 @@
 }
 
 /* ==========================================================================
-   Author's custom styles
+    Eric styles
    ========================================================================== */
 
+.container {}
 
+/* Adding rows & columns */
+.column {
+  float: left;
+  width: 50%;
+  padding: 3px;
+}
 
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
