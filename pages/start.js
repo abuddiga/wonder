@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 import { useState } from 'react'
 import firebase from '../firebase/clientApp'
 import cookieCutter from 'cookie-cutter'
+import Image from 'next/image'
 
 export default function Start() {
   // const { loadingUser, user } = useUser()
@@ -46,8 +47,9 @@ export default function Start() {
 
   return (
     <div className={styles.container}>
+      <h1 style={{textAlign:"center", color:"#325370"}}>We help you kick it.</h1>
       <div className={styles.gridrow}>
-        <label style={{marginRight:"1rem"}}>How big is your crew?</label>
+        <label style={{marginRight:"1rem", color:"#325370"}}>How big is your crew?</label>
         <Select id="group-select" onChange={e => setGroupSize(e.target.value)}>
             <option value={2} defaultValue>2</option>
             <option value={3}>3</option>
@@ -68,7 +70,7 @@ export default function Start() {
         />
       </div>
       <div className={styles.gridrow}>
-        <label style={{marginRight:"1rem"}}>Can I have yo numba?</label>
+        <label style={{marginRight:"1rem", color:"#325370"}}>Can I have yo numba?</label>
         <TextInputField
           onChange={e => setPhoneNumber(e.target.value)}
           value={phoneNumber}
