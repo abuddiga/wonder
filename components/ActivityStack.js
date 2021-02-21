@@ -2,6 +2,7 @@ import { TextInputField, Button, Select } from 'evergreen-ui'
 import Link from 'next/link'
 import Activity from './Activity'
 import styles from '../styles/Home.module.css'
+import akshayStyles from '../styles/akshay.module.css'
 import Image from 'next/image'
 
 export default function ActivityStack({ activities, currentIndex, setIndex, updateFavoriteActivities, goToNextPage }) {
@@ -29,6 +30,7 @@ export default function ActivityStack({ activities, currentIndex, setIndex, upda
 
   return (
     <div className={styles.container}>
+      <h2 className={akshayStyles.swipeTitle}>Where should we kick it?</h2>
       <Activity
         activity={activity}
         handleSwipeLeft={handleSwipeLeft}
