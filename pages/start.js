@@ -63,7 +63,7 @@ export default function Start() {
       <TextInputField
         onChange={e => setName(e.target.value)}
         value={name}
-        placeholder="Scout Finch"
+        placeholder="Hermione Granger"
         name="text-input-name"
         marginBottom={30}
         style={{width:"10rem", height:"3rem"}}

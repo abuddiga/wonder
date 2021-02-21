@@ -58,3 +58,7 @@
 .emptyDiv {
   height: 7rem;
 }
+
+.memberInfo {
+  transform: translateY(-12%);
+}
