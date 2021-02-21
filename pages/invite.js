@@ -12,11 +12,11 @@ export default function Invite({sessionId, userKey, host}) {
   console.log('host:', host)
   let url
   if (host) {
-    url = `http://${host}/${sessionId}`
+    url = `http://${host}/session/${sessionId}`
   } else {
     sessionId = cookieCutter.get('sessid')
     userKey = cookieCutter.get('guk')
-    url = `${window.location.origin}/${sessionId}`
+    url = `${window.location.origin}/session/${sessionId}`
   }
 
   return (
@@ -34,7 +34,7 @@ export default function Invite({sessionId, userKey, host}) {
           <img src={`/copy.svg`} alt={`copy`} />
           <div className={akshayStyles.copyDiv}>Copy url to share</div>
         </div>
-        <div className={akshayStyles.urlDiv}>{url}</div>
+        <a className={akshayStyles.urlDiv} href={url}>{url}</a>
       </div>
       <a href={`/session/${sessionId}`}>
         <Button height={45} className={styles.colorbutton}>Find Places to Kick It</Button>
