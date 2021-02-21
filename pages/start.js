@@ -4,7 +4,6 @@ import styles from '../styles/Home.module.css'
 import { useState } from 'react'
 import firebase from '../firebase/clientApp'
 import cookieCutter from 'cookie-cutter'
-import '../node_modules/react-bootstrap/'
 
 export default function Start() {
   // const { loadingUser, user } = useUser()
