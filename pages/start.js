@@ -47,7 +47,7 @@ export default function Start() {
   return (
     <div className={styles.container}>
       <div className={styles.grid}>
-        <label for="group-select">How big is your crew?</label>
+        <label htmlFor="group-select">How big is your crew?</label>
         <Select id="group-select" onChange={e => setGroupSize(e.target.value)}>
             <option value={2} defaultValue>2</option>
             <option value={3}>3</option>
