@@ -50,3 +50,11 @@
   margin: 20px;
   text-align: center;
 }
+
+.completeHeader {
+  transform: translateY(-250%);
+}
+
+.emptyDiv {
+  height: 7rem;
+}

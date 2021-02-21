@@ -28,7 +28,8 @@ export default function Activity({ activity, handleSwipeLeft, handleSwipeRight})
             onClick={() => handleSwipeRight()}
           />
         </div> :
-        null
+        <div className={akshayStyles.emptyDiv}>
+        </div>
       }
     </div>
   )
