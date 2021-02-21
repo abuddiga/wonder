@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { Button } from 'evergreen-ui'
+import ericStyles from '../styles/eric.module.css'
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
+
 
 export default function Home() {
   return (
@@ -12,10 +14,13 @@ export default function Home() {
           <Image alt="Kick it logo" src="/logo.png" width={200} height={133.33} />
         </div>
           <h3 className={styles.tagline}>
-            Make plans with your crew. One swipe at a time.
+          <div className = {styles.row}>
+            Life is short.  
+          </div>
+            Plan less, enjoy more.
           </h3>
         <div className={styles.containercard}>
-          <div className={styles.grid}>
+          <div className={styles.grid2}>
             <p className={styles.value3}>
               👯‍ Gather your crew
             </p>
@@ -25,8 +30,9 @@ export default function Home() {
             <p className={styles.value3}>
               ♥️ Receive your top match
             </p>
-            <Link href="/start" className={styles.card}>
-              <Button height={45}>Let's kick it</Button>
+
+            <Link href="/start" className={styles.cardCenter}>
+              <Button className={styles.pinkbutton} style={{display:"inline", textAlign:"center"}}> Let's kick it! </Button>
             </Link>
           </div>
         </div> 
