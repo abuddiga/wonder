@@ -9,7 +9,7 @@ export default function Invite({sessionId, userKey, host}) {
 
   console.log('sessionId: ', sessionId)
   console.log('userKey: ', userKey)
-  console.log('host: ', host)
+  console.log('host:', host)
   let url
   if (host) {
     url = `http://${host}/${sessionId}`
