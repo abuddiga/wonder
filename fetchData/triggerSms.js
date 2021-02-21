@@ -1,6 +1,6 @@
-export const accountSid = "AC738b25608ab66c0b66dd805e71c939f1";
-export const authToken = "ac9db8c663ed1924aa3a21627d074119";
-export const fromPh = "+12029524896"
+export const accountSid = process.env.TWILIO_ACCOUNT_SID;
+export const authToken = process.env.TWILIO_AUTH_TOKEN;
+export const fromPh = process.env.TWILIO_PHONE_NUMBER;
 export const twilioUrl = "https://conversations.twilio.com/v1/Conversations/"
 //Sending POST in below format
 //curl -X POST https://api.twilio.com/2010-04-01/Accounts/AC738b25608ab66c0b66dd805e71c939f1/Messages.json --data-urlencode "Body=Hi there$EXCLAMATION_MARK" --data-urlencode "From=+12029524896" --data-urlencode "MediaUrl=https://www.sftravel.com/sites/sftravel.prod.acquia-sites.com/files/field/image/Alamo-Sq.jpg" --data-urlencode "To=+15167430518" -u AC738b25608ab66c0b66dd805e71c939f1:6335ec0f045a035a0bd2606f14b13bdd
