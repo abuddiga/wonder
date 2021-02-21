@@ -26,7 +26,7 @@ export default function Home() {
               ♥️ Receive your top match
             </p>
             <Link href="/start" className={styles.card}>
-              <Button height={56}>Let's kick it</Button>
+              <Button height={45}>Let's kick it</Button>
             </Link>
           </div>
         </div> 
