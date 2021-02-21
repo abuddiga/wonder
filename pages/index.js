@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { Button } from 'evergreen-ui'
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 export default function Home() {
   return (
@@ -27,7 +26,7 @@ export default function Home() {
               ♥️ Receive your top match
             </p>
             <Link href="/start" className={styles.card}>
-              <Button>Let's kick it</Button>
+              <Button height={56}>Let's kick it</Button>
             </Link>
           </div>
         </div> 

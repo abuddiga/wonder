@@ -4,7 +4,6 @@ import styles from '../styles/Home.module.css'
 import { useState } from 'react'
 import firebase from '../firebase/clientApp'
 import cookieCutter from 'cookie-cutter'
-import '../node_modules/react-bootstrap/'
 
 export default function Start() {
   // const { loadingUser, user } = useUser()
@@ -47,8 +46,8 @@ export default function Start() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.grid}>
-        <label htmlFor="group-select">How big is your crew?</label>
+      <div className={styles.gridrow}>
+        <label style={{marginRight:"1rem"}}>How big is your crew?</label>
         <Select id="group-select" onChange={e => setGroupSize(e.target.value)}>
             <option value={2} defaultValue>2</option>
             <option value={3}>3</option>
@@ -57,27 +56,31 @@ export default function Start() {
             <option value={6}>6</option>
             <option value={7}>7</option>
         </Select>
+      </div>
+      <div className={styles.gridrow}>
+        <label style={{marginRight:"1rem"}}>What should we call you?</label>
         <TextInputField
           onChange={e => setName(e.target.value)}
           value={name}
-          label="What should we call you?"
           placeholder="Scout Finch"
           name="text-input-name"
-          className={styles.input}
-          required
+          marginBottom={0}
         />
+      </div>
+      <div className={styles.gridrow}>
+        <label style={{marginRight:"1rem"}}>Can I have yo numba?</label>
         <TextInputField
           onChange={e => setPhoneNumber(e.target.value)}
           value={phoneNumber}
-          label="Can I have yo numba?"
           placeholder="555-555-555"
           type="tel"
           name="text-input-number"
-          className={styles.input}
-          required
+          marginBottom={0}
         />
+        </div>
+      <div className={styles.gridrow}>
         <Link href="/invite">
-          <Button className={styles.colorbutton} onClick={createSession}>Let's Kick It</Button>
+          <Button className={styles.colorbutton} height={56} onClick={createSession}>Let's Kick It</Button>
         </Link>
       </div>
     </div>
