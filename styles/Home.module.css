@@ -7,6 +7,12 @@
   align-items: center;
 }
 
+.colorbutton {
+  border-radius:8px !important;
+  background-image: linear-gradient(#3DCDC7, #33AFAA 85%) !important;
+  color:white !important;
+}
+
 .main {
   padding: 5rem 0;
   flex: 1;

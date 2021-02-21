@@ -76,7 +76,7 @@ export default function Start() {
           required
         />
         <Link href="/invite">
-          <Button style={{cornerRadius:"8px", backgroundImage: "linear-gradient(#3DCDC7, #33AFAA 85%)", color:"white"}} onClick={createSession}>Let's Kick It</Button>
+          <Button className={styles.colorbutton} onClick={createSession}>Let's Kick It</Button>
         </Link>
       </div>
     </div>
