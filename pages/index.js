@@ -15,7 +15,7 @@ export default function Home() {
         </h3>
         <div className={styles.grid}>
           <Link href="/start" className={styles.card}>
-            <Button>Start a Session</Button>
+            <Button height={56}>Start a Session</Button>
           </Link>
         </div>
       </main>

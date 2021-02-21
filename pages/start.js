@@ -76,7 +76,7 @@ export default function Start() {
           required
         />
         <Link href="/invite">
-          <Button className={styles.colorbutton} onClick={createSession}>Let's Kick It</Button>
+          <Button className={styles.colorbutton} height={56} onClick={createSession}>Let's Kick It</Button>
         </Link>
       </div>
     </div>

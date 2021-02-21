@@ -22,7 +22,7 @@ export default function Invite({sessionId, userKey, host}) {
       <h3>Great, now share this link with your crew to find an activity!</h3>
       <p>{url}</p>
       <a href={`/session/${sessionId}`}>
-        <Button>Find Places to Kick It</Button>
+        <Button height={56}>Find Places to Kick It</Button>
       </a>
     </div>
   )
