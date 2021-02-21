@@ -1,0 +1,9 @@
+.swipeTitle {
+  width: 90%;
+  margin: 0 0 10% 0;;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: center;
+}
