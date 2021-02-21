@@ -66,6 +66,7 @@ export default function Start() {
           value={name}
           placeholder="Scout Finch"
           name="text-input-name"
+          label=""
           marginBottom={0}
         />
       </div>
@@ -77,6 +78,7 @@ export default function Start() {
           placeholder="555-555-555"
           type="tel"
           name="text-input-number"
+          label=""
           marginBottom={0}
         />
         </div>
