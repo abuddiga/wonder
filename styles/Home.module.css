@@ -197,7 +197,22 @@
     Eric styles
    ========================================================================== */
 
-.container {}
+.container2 {
+  width: 100%;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.containercard {
+  width: 100%;
+  background-color: #325370;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
+}
 
 /* Adding rows & columns */
 .column {
@@ -211,4 +226,57 @@
   content: "";
   clear: both;
   display: table;
+}
+
+.verticalCenter {
+  margin: 0;
+  position: inherit;
+  top: 80px;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-20%);
+}
+
+.tagline {
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  color: #325370;
+  font-weight: 500;
+  padding-left: 40px;
+  padding-right: 40px;
+  transform: translateY(-50%);
+}
+
+.value3 {
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 600;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url('/fonts/Roboto-Bold.ttf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url('/fonts/Roboto-Medium.ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url('/fonts/Roboto-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url('/fonts/Roboto-Light.ttf');
+  font-weight: 300;
 }
