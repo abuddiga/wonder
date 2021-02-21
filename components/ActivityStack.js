@@ -1,6 +1,7 @@
 import { TextInputField, Button, Select } from 'evergreen-ui'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import Image from 'next/image'
 
 export default function ActivityStack({ activities, currentIndex, setIndex, updateFavoriteActivities, goToNextPage }) {
   function handleSwipeLeft(e) {
@@ -27,11 +28,17 @@ export default function ActivityStack({ activities, currentIndex, setIndex, upda
 
   return (
     <div className={styles.container}>
-      <img className={styles.image} src={activity.img_link}/>
+      <img className={styles.swipeimage} src={activity.img_link}/>
       <h3>{activity.title}</h3>
       <p>{activity.description}</p>
-      <Button onClick={() => handleSwipeLeft()}>Nah Bro</Button>
-      <Button primary onClick={() => handleSwipeRight()}>Yay</Button>
+        <div className={styles.row}>
+          <div className={styles.column}>
+              <Button primary onClick={() => handleSwipeLeft()}>Nah</Button>
+          </div>
+          <div className={styles.column}>
+            <Button primary onClick={() => handleSwipeRight()}>Yay</Button>
+          </div>
+        </div>
     </div>
   )
 }
