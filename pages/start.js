@@ -82,7 +82,7 @@ export default function Start() {
         </div>
       <div className={styles.gridrow}>
         <Link href="/invite">
-          <Button className={styles.colorbutton} height={56} onClick={createSession}>Let's Kick It</Button>
+          <Button className={styles.colorbutton} height={45} onClick={createSession}>Let's Kick It</Button>
         </Link>
       </div>
     </div>

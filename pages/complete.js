@@ -3,11 +3,12 @@ import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import akshayStyles from '../styles/akshay.module.css'
 import firebase from '../firebase/clientApp'
 import cookieCutter from 'cookie-cutter'
 import Cookies from 'cookies'
-import intersection from 'lodash/intersection'
 import triggerSms from '../fetchData/triggerSms'
+import Activity from '../components/Activity'
 
 function mostFrequent(arr) {
   return Object.entries(
@@ -124,18 +125,21 @@ export default function Complete() {
   if(!activityMatch) {
     return (
       <div className={styles.container}>
-        <p>{`Nice! That’s it for this session. We’re still waiting on xyz group members to finish. Hang tight and we’ll automatically text your group when everyone is done.`}</p>
-        <p>{`Flaky friend? You can always close out the kick-it by tapping below, and we'll text the group where you're all headed!`}</p>
-        <Button onClick={() => runMatch()}>Close out Kick It</Button>
-        {/* <Button onClick={() => callSms()}>Call Sms</Button> */}
+        <img src={`/checkmark.svg`} alt={`checkmark`} />
+        <h2>The waiting begins...</h2>
+        <div className={akshayStyles.completeText}>
+          <p>{`We’re still waiting on some group members to finish. Hang tight and we’ll text your group when everyone is done.`}</p>
+          <p>{`Flaky friend? You can always close out the kick-it by tapping below.`}</p>
+        </div>
+        <Button height={45} className={styles.colorbutton} onClick={() => runMatch()}>Close Kick It Now</Button>
       </div>
     )
   }
 
   return (
     <div className={styles.container}>
-      <img className={styles.image} src={activityMatch.img_link}/>
-      <h3>{`You're going to ${activityMatch.title}!`}</h3>
+      <h3>{`You're going to...`}</h3>
+      <Activity activity={activityMatch} />
     </div>
   )
 }
