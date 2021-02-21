@@ -1,7 +1,7 @@
 import { Button } from 'evergreen-ui'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
-import akshayStyles from '../styles/Home.module.css'
+import akshayStyles from '../styles/akshay.module.css'
 
 export default function Activity({ activity, handleSwipeLeft, handleSwipeRight}) {
   return (
