@@ -6,8 +6,8 @@ import styles from '../styles/Home.module.css'
 import firebase from '../firebase/clientApp'
 import cookieCutter from 'cookie-cutter'
 import Cookies from 'cookies'
-import intersection from 'lodash/intersection'
 import triggerSms from '../fetchData/triggerSms'
+import Activity from '../components/Activity'
 
 function mostFrequent(arr) {
   return Object.entries(
@@ -134,8 +134,8 @@ export default function Complete() {
 
   return (
     <div className={styles.container}>
-      <img className={styles.image} src={activityMatch.img_link}/>
-      <h3>{`You're going to ${activityMatch.title}!`}</h3>
+      <h3>{`You're going to...`}</h3>
+      <Activity activity={activityMatch} />
     </div>
   )
 }
