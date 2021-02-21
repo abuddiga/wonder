@@ -7,3 +7,10 @@
   display: flex;
   justify-content: center;
 }
+
+.completeText {
+  width: 80%;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 2.5rem;
+}
